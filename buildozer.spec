@@ -4,10 +4,10 @@
 title = الحاسبة الذكية
 
 # (str) Package name
-package.name = smartcalculator
+package.name = 2
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.mohamedmosa
+package.domain = 2
 
 # (str) Source code where the main.py live
 source.dir = .
