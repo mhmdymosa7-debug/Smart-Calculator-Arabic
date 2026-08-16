@@ -28,13 +28,16 @@ orientation = portrait
 fullscreen = 0
 
 # (str) Android API to use
-android.api = 33
+android.api = 34
 
 # (int) Minimum API required
-android.minapi = 23
+android.minapi = 21
 
 # (str) Android NDK version to use
 android.ndk = 25b
+
+# (str) Android SDK version to use (optional, leave commented or match api)
+# android.sdk = 34
 
 # (bool) Use the Android NDK for building the app
 android.accept_sdk_license = True
