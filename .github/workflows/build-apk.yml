@@ -18,8 +18,9 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
+        cache: 'pip' # تسريع تثبيت مكتبات بايثون
 
-    - name: Install dependencies
+    - name: Install System Dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y \
@@ -32,12 +33,37 @@ jobs:
         pip install --upgrade pip
         pip install --upgrade buildozer cython
 
+    # 1. التخزين المؤقت لملفات Buildozer (SDK, NDK, Android home)
+    - name: Cache Buildozer global directory
+      uses: actions/cache@v4
+      with:
+        path: ~/.buildozer
+        key: ${{ runner.os }}-buildozer-global-${{ hashFiles('buildozer.spec') }}
+        restore-keys: |
+          ${{ runner.os }}-buildozer-global-
+
+    # 2. التخزين المؤقت لملفات المشروع المحملة والمبنية سابقا داخل مجلد العمل
+    - name: Cache Buildozer local project directory
+      uses: actions/cache@v4
+      with:
+        path: .buildozer
+        key: ${{ runner.os }}-buildozer-local-${{ hashFiles('buildozer.spec') }}
+        restore-keys: |
+          ${{ runner.os }}-buildozer-local-
+
+    # 3. التخزين المؤقت لملفات Gradle لضمان عدم تحميلها مجددا
+    - name: Cache Gradle packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+
     - name: Build with Buildozer
       uses: ArtemSBulgakov/buildozer-action@v1
       with:
         command: buildozer android debug
-        # أو استخدم السطر التالي إذا أردت بناء وتجنب الاعتماد على Docker بالكامل:
-        # 0run: buildozer android debug
 
     - name: Upload APK artifact
       uses: actions/upload-artifact@v4
