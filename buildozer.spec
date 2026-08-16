@@ -2,6 +2,7 @@
 title = الحاسبة الذكية
 package.name = smartcalculator
 package.domain = org.mohamedmosa
+version = 1.0.0
 source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas,txt,json
 requirements = python3,kivy
