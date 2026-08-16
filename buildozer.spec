@@ -4,10 +4,10 @@
 title = الحاسبة الذكية
 
 # (str) Package name
-package.name = 2
+package.name = smartcalculator
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = 2
+package.domain = org.mohamedmosa
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -16,7 +16,6 @@ source.dir = .
 source.include_exts = py,png,jpg,jpeg,kv,atlas,txt,json
 
 # (list) Application requirements
-# إضافة 'openssl' و 'requests' مفيدة إذا كنت تتعامل مع إنترنت
 requirements = python3,kivy
 
 # (str) Application versioning (starting from 1.0.0)
@@ -28,13 +27,13 @@ orientation = portrait
 # (bool) Indicate if the application should be fullscreen
 fullscreen = 0
 
-# (str) Android API to use. 33 هو الأكثر استقراراً حالياً
+# (str) Android API to use
 android.api = 33
 
 # (int) Minimum API required
 android.minapi = 23
 
-# (str) Android NDK version to use. 25b هو الإصدار الأكثر توافقاً
+# (str) Android NDK version to use
 android.ndk = 25b
 
 # (bool) Use the Android NDK for building the app
