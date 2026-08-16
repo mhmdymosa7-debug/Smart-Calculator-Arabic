@@ -36,10 +36,10 @@ android.minapi = 21
 # (str) Android NDK version to use
 android.ndk = 25b
 
-# (str) Android SDK version to use (optional, leave commented or match api)
-# android.sdk = 34
+# (bool) Allow AndroidX to build modern libraries
+android.enable_androidx = True
 
-# (bool) Use the Android NDK for building the app
+# (bool) Accept Android SDK license automatically
 android.accept_sdk_license = True
 
 # (str) Log level (0 = error, 1 = info, 2 = debug)
