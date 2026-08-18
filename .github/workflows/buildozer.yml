@@ -9,14 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Build with Buildozer
-        uses: kivy/buildozer-action@master
-        id: buildozer
+        uses: skjerns/buildozer-action@v3
         with:
-          filename: buildozer.spec
+          command: buildozer -v android debug
+          buildozer_version: master
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
